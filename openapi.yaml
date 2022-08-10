@@ -3217,11 +3217,13 @@ components:
         interests:
           description: user interests
           type: array
+          default: null
           items:
             type: string
         skills:
           description: user skills
           type: array
+          default: null
           items:
             type: string
       type: object
