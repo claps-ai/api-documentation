@@ -3217,13 +3217,13 @@ components:
         interests:
           description: user interests
           type: array
-            items:
-              type: string
+          items:
+            type: string
         skills:
           description: user skills
           type: array
-            items:
-              type: string
+          items:
+            type: string
       type: object
 
     UserRequestProfile:
@@ -3256,13 +3256,13 @@ components:
         interests:
           description: user interests
           type: array
-            items:
-              type: string
+          items:
+            type: string
         skills:
           description: user skills
           type: array
-            items:
-              type: string
+          items:
+            type: string
 
     NotificationUserAcceptedResponse:
       type: object
