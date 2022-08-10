@@ -3231,6 +3231,18 @@ components:
         bio:
           description: user biography
           type: string
+        company:
+          description: user company
+          type: string
+        twitter:
+          description: user twitter
+          type: string
+        linkedin:
+          description: user linkedin
+          type: string
+        website:
+          description: user web
+          type: string
 
     NotificationUserAcceptedResponse:
       type: object
