@@ -590,6 +590,26 @@ paths:
       tags:
         - user
 
+  /user/profile/cover-photo:
+    post:
+      security:
+        - DeviceId: [ ]
+      description: |
+        Change user profile cover photo. The process has two steps:
+
+        1. Call this end-point
+        2. This end-point returns an upload url. You must use then to upload the new image to them.
+      operationId: Update User Cover Photo
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadResourceResponse'
+          description: Successful response
+      tags:
+        - user
+
   /user/followers/{UserId}:
     get:
       description: Get User Followers
@@ -3164,6 +3184,10 @@ components:
           type: string
         photo:
           description: url to user profile photo
+          type: string
+          nullable: true
+        cover_photo:
+          description: url to user profile cover photo
           type: string
           nullable: true
         following:
