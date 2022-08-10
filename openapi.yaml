@@ -3214,6 +3214,16 @@ components:
           description: total people that follow an user
           type: number
           default: 0
+        interests:
+          description: user interests
+          type: array
+            items:
+              type: string
+        skills:
+          description: user skills
+          type: array
+            items:
+              type: string
       type: object
 
     UserRequestProfile:
@@ -3243,6 +3253,16 @@ components:
         web:
           description: user web
           type: string
+        interests:
+          description: user interests
+          type: array
+            items:
+              type: string
+        skills:
+          description: user skills
+          type: array
+            items:
+              type: string
 
     NotificationUserAcceptedResponse:
       type: object
