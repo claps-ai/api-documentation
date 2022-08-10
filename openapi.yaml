@@ -3179,6 +3179,22 @@ components:
           description: user biography
           type: string
           nullable: true
+        company:
+          description: user biography
+          type: string
+          nullable: true
+        linkedin:
+          description: user linkedin
+          type: string
+          nullable: true
+        twitter:
+          description: user twitter
+          type: string
+          nullable: true
+        website:
+          description: user website
+          type: string
+          nullable: true
         id:
           description: unique user ID
           type: string
