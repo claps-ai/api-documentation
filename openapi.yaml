@@ -3191,7 +3191,7 @@ components:
           description: user twitter
           type: string
           nullable: true
-        website:
+        web:
           description: user website
           type: string
           nullable: true
@@ -3240,7 +3240,7 @@ components:
         linkedin:
           description: user linkedin
           type: string
-        website:
+        web:
           description: user web
           type: string
 
