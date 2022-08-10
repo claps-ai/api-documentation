@@ -1,16 +1,13 @@
 openapi: 3.0.0
 servers:
-  - url: 'https://staging2.api.claps.ai/v1'
-    description: stagging end-point
-  - url: 'https://api.claps.ai/v1'
-    description: production end-point
-  - url: 'https://development.api.claps.ai/v1'
-    description: development end-point
+  - url: https://api.claps.ai/v1
+  - url: https://staging2.api.claps.ai/v1
+  - url: https://development.api.claps.ai/v1
 security:
   - apiKey: []
 info:
   contact:
-    name: dev@claps.ai
+    name: hey@thecircles.com
     url: 'https://docs.api.claps.ai/'
   description: |
     Interact with Claps API.
