@@ -4,7 +4,7 @@ servers:
   - url: https://staging2.api.claps.ai/v1
   - url: https://development.api.claps.ai/v1
 security:
-  - apiKey: []
+  - apiKey: [ ]
 info:
   contact:
     name: hey@thecircles.com
@@ -23,7 +23,7 @@ info:
     **User was deactivated**:
     
     HTTP Response code 422: This user is deactivated
-    
+  
 
   license:
     name: Creative Commons Attribution 3.0
@@ -185,7 +185,7 @@ paths:
   /health-check-auth:
     get:
       security:
-        - DeviceId: []
+        - DeviceId: [ ]
       description: Health check end point that requires authentication
       operationId: Health Check Authenticated
       responses:
@@ -239,36 +239,36 @@ paths:
       security:
         - DeviceId: [ ]
       description: |
-            # List pending notifications summary.
-
-            Each notification returns a 'type of notification' (as an integer) depending of the type you must get notification details at the custom end-point:
-
-            ## Notification types and end-points of details
-
-            ### Type: 1
-
-            - Description: An user was accepted into a tribe. This message is received user that was accepted into the tribe.
-            - Detailed end-point: /notifications/new-accepted-into-tribe
-
-            ### Type: 2
-
-            - Description: An user requested access to a tribe. This message is received by a tribe owner.
-            - Detailed end-point: /notifications/new-access-request-to-tribe
-
-            ### Type: 3
-
-            - Description: New tribe member. This message was received to all tribe members.
-            - Detailed end-point: /notifications/new-tribe-video
-
-            ### Type: 4
-
-            - Description: New video in a tribe. This message was received to all tribe members.
-            - Detailed end-point: /notifications/new-tribe-video
-
-            ### Type: 5
-
-            - Description: New user video. This message was received to all user followers.
-            - Detailed end-point: /notifications/new-user-video
+        # List pending notifications summary.
+        
+        Each notification returns a 'type of notification' (as an integer) depending of the type you must get notification details at the custom end-point:
+        
+        ## Notification types and end-points of details
+        
+        ### Type: 1
+        
+        - Description: An user was accepted into a tribe. This message is received user that was accepted into the tribe.
+        - Detailed end-point: /notifications/new-accepted-into-tribe
+        
+        ### Type: 2
+        
+        - Description: An user requested access to a tribe. This message is received by a tribe owner.
+        - Detailed end-point: /notifications/new-access-request-to-tribe
+        
+        ### Type: 3
+        
+        - Description: New tribe member. This message was received to all tribe members.
+        - Detailed end-point: /notifications/new-tribe-video
+        
+        ### Type: 4
+        
+        - Description: New video in a tribe. This message was received to all tribe members.
+        - Detailed end-point: /notifications/new-tribe-video
+        
+        ### Type: 5
+        
+        - Description: New user video. This message was received to all user followers.
+        - Detailed end-point: /notifications/new-user-video
 
       parameters:
         - description: Page number. Default is 0
@@ -301,7 +301,7 @@ paths:
     get:
       security:
         - DeviceId: [ ]
-      description:  User get this notification when is accepted into a new tribe
+      description: User get this notification when is accepted into a new tribe
       operationId: Accepted Users Into a Tribe
       responses:
         '200':
@@ -318,7 +318,7 @@ paths:
     get:
       security:
         - DeviceId: [ ]
-      description:  Tribe owner receives this notification when a new user want to access to the tribe and sends a new request request to the tribe
+      description: Tribe owner receives this notification when a new user want to access to the tribe and sends a new request request to the tribe
       operationId: New User Access Request
       responses:
         '200':
@@ -1904,15 +1904,15 @@ paths:
   /slides/models/action:
     get:
       tags:
-      - slides
+        - slides
       operationId: action
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -1924,15 +1924,15 @@ paths:
                   $ref: '#/components/schemas/action'
     put:
       tags:
-      - slides
+        - slides
       operationId: action
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -1942,15 +1942,15 @@ paths:
                 $ref: '#/components/schemas/action'
     post:
       tags:
-      - slides
+        - slides
       operationId: action
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -1960,15 +1960,15 @@ paths:
                 $ref: '#/components/schemas/action'
     patch:
       tags:
-      - slides
+        - slides
       operationId: action
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -1980,20 +1980,20 @@ paths:
   /slides/models/action/{action_id}:
     get:
       tags:
-      - slides
+        - slides
       operationId: action/{action_id}
       parameters:
-      - name: action_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: action_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2003,20 +2003,20 @@ paths:
                 $ref: '#/components/schemas/action'
     put:
       tags:
-      - slides
+        - slides
       operationId: action/{action_id}
       parameters:
-      - name: action_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: action_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2026,34 +2026,34 @@ paths:
                 $ref: '#/components/schemas/action'
     delete:
       tags:
-      - slides
+        - slides
       operationId: action/{action_id}
       parameters:
-      - name: action_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: action_id
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         200:
           description: Success
-          content: {}
+          content: { }
     patch:
       tags:
-      - slides
+        - slides
       operationId: action/{action_id}
       parameters:
-      - name: action_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: action_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2065,15 +2065,15 @@ paths:
   /slides/models/slides:
     get:
       tags:
-      - slides
+        - slides
       operationId: slides
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2085,15 +2085,15 @@ paths:
                   $ref: '#/components/schemas/slides'
     put:
       tags:
-      - slides
+        - slides
       operationId: slides
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2103,15 +2103,15 @@ paths:
                 $ref: '#/components/schemas/slides'
     post:
       tags:
-      - slides
+        - slides
       operationId: slides
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2121,15 +2121,15 @@ paths:
                 $ref: '#/components/schemas/slides'
     patch:
       tags:
-      - slides
+        - slides
       operationId: slides
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2141,20 +2141,20 @@ paths:
   /slides/models/slides/{slides_id}:
     get:
       tags:
-      - slides
+        - slides
       operationId: slides/{slides_id}
       parameters:
-      - name: slides_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: slides_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2164,20 +2164,20 @@ paths:
                 $ref: '#/components/schemas/slides'
     put:
       tags:
-      - slides
+        - slides
       operationId: slides/{slides_id}
       parameters:
-      - name: slides_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: slides_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2187,34 +2187,34 @@ paths:
                 $ref: '#/components/schemas/slides'
     delete:
       tags:
-      - slides
+        - slides
       operationId: slides/{slides_id}
       parameters:
-      - name: slides_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: slides_id
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         200:
           description: Success
-          content: {}
+          content: { }
     patch:
       tags:
-      - slides
+        - slides
       operationId: slides/{slides_id}
       parameters:
-      - name: slides_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: slides_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2226,15 +2226,15 @@ paths:
   /slides/models/structure:
     get:
       tags:
-      - slides
+        - slides
       operationId: structure
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2246,15 +2246,15 @@ paths:
                   $ref: '#/components/schemas/structure'
     put:
       tags:
-      - slides
+        - slides
       operationId: structure
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2264,15 +2264,15 @@ paths:
                 $ref: '#/components/schemas/structure'
     post:
       tags:
-      - slides
+        - slides
       operationId: structure
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2282,15 +2282,15 @@ paths:
                 $ref: '#/components/schemas/structure'
     patch:
       tags:
-      - slides
+        - slides
       operationId: structure
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2302,20 +2302,20 @@ paths:
   /slides/models/structure/{structure_id}:
     get:
       tags:
-      - slides
+        - slides
       operationId: structure/{structure_id}
       parameters:
-      - name: structure_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: structure_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2325,20 +2325,20 @@ paths:
                 $ref: '#/components/schemas/structure'
     put:
       tags:
-      - slides
+        - slides
       operationId: structure/{structure_id}
       parameters:
-      - name: structure_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: structure_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2348,34 +2348,34 @@ paths:
                 $ref: '#/components/schemas/structure'
     delete:
       tags:
-      - slides
+        - slides
       operationId: structure/{structure_id}
       parameters:
-      - name: structure_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: structure_id
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         200:
           description: Success
-          content: {}
+          content: { }
     patch:
       tags:
-      - slides
+        - slides
       operationId: structure/{structure_id}
       parameters:
-      - name: structure_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: structure_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2387,15 +2387,15 @@ paths:
   /slides/models/structure_1:
     get:
       tags:
-      - slides
+        - slides
       operationId: structure1
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2407,15 +2407,15 @@ paths:
                   $ref: '#/components/schemas/structure_1'
     put:
       tags:
-      - slides
+        - slides
       operationId: structure1
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2425,15 +2425,15 @@ paths:
                 $ref: '#/components/schemas/structure_1'
     post:
       tags:
-      - slides
+        - slides
       operationId: structure1
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2443,15 +2443,15 @@ paths:
                 $ref: '#/components/schemas/structure_1'
     patch:
       tags:
-      - slides
+        - slides
       operationId: structure1
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2463,20 +2463,20 @@ paths:
   /slides/models/structure_1/{structure_1_id}:
     get:
       tags:
-      - slides
+        - slides
       operationId: structure1/{structure_1_id}
       parameters:
-      - name: structure_1_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: structure_1_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2486,20 +2486,20 @@ paths:
                 $ref: '#/components/schemas/structure_1'
     put:
       tags:
-      - slides
+        - slides
       operationId: structure1/{structure_1_id}
       parameters:
-      - name: structure_1_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: structure_1_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2509,34 +2509,34 @@ paths:
                 $ref: '#/components/schemas/structure_1'
     delete:
       tags:
-      - slides
+        - slides
       operationId: structure1/{structure_1_id}
       parameters:
-      - name: structure_1_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: structure_1_id
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         200:
           description: Success
-          content: {}
+          content: { }
     patch:
       tags:
-      - slides
+        - slides
       operationId: structure1/{structure_1_id}
       parameters:
-      - name: structure_1_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: structure_1_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2548,15 +2548,15 @@ paths:
   /slides/models/structure_2:
     get:
       tags:
-      - slides
+        - slides
       operationId: structure2
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2568,15 +2568,15 @@ paths:
                   $ref: '#/components/schemas/structure_2'
     put:
       tags:
-      - slides
+        - slides
       operationId: structure2
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2586,15 +2586,15 @@ paths:
                 $ref: '#/components/schemas/structure_2'
     post:
       tags:
-      - slides
+        - slides
       operationId: structure2
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2604,15 +2604,15 @@ paths:
                 $ref: '#/components/schemas/structure_2'
     patch:
       tags:
-      - slides
+        - slides
       operationId: structure2
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2624,20 +2624,20 @@ paths:
   /slides/models/structure_2/{structure_2_id}:
     get:
       tags:
-      - slides
+        - slides
       operationId: structure2/{structure_2_id}
       parameters:
-      - name: structure_2_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: structure_2_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2647,20 +2647,20 @@ paths:
                 $ref: '#/components/schemas/structure_2'
     put:
       tags:
-      - slides
+        - slides
       operationId: structure2/{structure_2_id}
       parameters:
-      - name: structure_2_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: structure_2_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2670,34 +2670,34 @@ paths:
                 $ref: '#/components/schemas/structure_2'
     delete:
       tags:
-      - slides
+        - slides
       operationId: structure2/{structure_2_id}
       parameters:
-      - name: structure_2_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: structure_2_id
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         200:
           description: Success
-          content: {}
+          content: { }
     patch:
       tags:
-      - slides
+        - slides
       operationId: structure2/{structure_2_id}
       parameters:
-      - name: structure_2_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: structure_2_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2709,15 +2709,15 @@ paths:
   /slides/models/structure_3:
     get:
       tags:
-      - slides
+        - slides
       operationId: structure3
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2729,15 +2729,15 @@ paths:
                   $ref: '#/components/schemas/structure_3'
     put:
       tags:
-      - slides
+        - slides
       operationId: structure3
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2747,15 +2747,15 @@ paths:
                 $ref: '#/components/schemas/structure_3'
     post:
       tags:
-      - slides
+        - slides
       operationId: structure3
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2765,15 +2765,15 @@ paths:
                 $ref: '#/components/schemas/structure_3'
     patch:
       tags:
-      - slides
+        - slides
       operationId: structure3
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2785,20 +2785,20 @@ paths:
   /slides/models/structure_3/{structure_3_id}:
     get:
       tags:
-      - slides
+        - slides
       operationId: structure3/{structure_3_id}
       parameters:
-      - name: structure_3_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: structure_3_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2808,20 +2808,20 @@ paths:
                 $ref: '#/components/schemas/structure_3'
     put:
       tags:
-      - slides
+        - slides
       operationId: structure3/{structure_3_id}
       parameters:
-      - name: structure_3_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: structure_3_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2831,34 +2831,34 @@ paths:
                 $ref: '#/components/schemas/structure_3'
     delete:
       tags:
-      - slides
+        - slides
       operationId: structure3/{structure_3_id}
       parameters:
-      - name: structure_3_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: structure_3_id
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         200:
           description: Success
-          content: {}
+          content: { }
     patch:
       tags:
-      - slides
+        - slides
       operationId: structure3/{structure_3_id}
       parameters:
-      - name: structure_3_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: structure_3_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2870,15 +2870,15 @@ paths:
   /slides/models/template:
     get:
       tags:
-      - slides
+        - slides
       operationId: template
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2890,15 +2890,15 @@ paths:
                   $ref: '#/components/schemas/template'
     put:
       tags:
-      - slides
+        - slides
       operationId: template
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2908,15 +2908,15 @@ paths:
                 $ref: '#/components/schemas/template'
     post:
       tags:
-      - slides
+        - slides
       operationId: template
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2926,15 +2926,15 @@ paths:
                 $ref: '#/components/schemas/template'
     patch:
       tags:
-      - slides
+        - slides
       operationId: template
       parameters:
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2946,20 +2946,20 @@ paths:
   /slides/models/template/{template_id}:
     get:
       tags:
-      - slides
+        - slides
       operationId: template/{template_id}
       parameters:
-      - name: template_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: template_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2969,20 +2969,20 @@ paths:
                 $ref: '#/components/schemas/template'
     put:
       tags:
-      - slides
+        - slides
       operationId: template/{template_id}
       parameters:
-      - name: template_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: template_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -2992,34 +2992,34 @@ paths:
                 $ref: '#/components/schemas/template'
     delete:
       tags:
-      - slides
+        - slides
       operationId: template/{template_id}
       parameters:
-      - name: template_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: template_id
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         200:
           description: Success
-          content: {}
+          content: { }
     patch:
       tags:
-      - slides
+        - slides
       operationId: template/{template_id}
       parameters:
-      - name: template_id
-        in: path
-        required: true
-        schema:
-          type: string
-      - name: X-Fields
-        in: header
-        description: An optional fields mask
-        schema:
-          type: string
-          format: mask
+        - name: template_id
+          in: path
+          required: true
+          schema:
+            type: string
+        - name: X-Fields
+          in: header
+          description: An optional fields mask
+          schema:
+            type: string
+            format: mask
       responses:
         200:
           description: Success
@@ -3031,90 +3031,90 @@ paths:
   /gcp/images/{image_id}:
     get:
       tags:
-      - slides
+        - slides
       operationId: image/{image_id}
       parameters:
-      - name: image_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: image_id
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         200:
           description: Success
-          content: {}
+          content: { }
     put:
       tags:
-      - slides
+        - slides
       operationId: image/{image_id}
       parameters:
-      - name: image_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: image_id
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         200:
           description: Success
-          content: {}
+          content: { }
     post:
       tags:
-      - slides
+        - slides
       operationId: image/{image_id}
       parameters:
-      - name: image_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: image_id
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         200:
           description: Success
-          content: {}
+          content: { }
 
   /gcp/videos/{video_id}:
     get:
       tags:
-      - slides
+        - slides
       operationId: video/{video_id}
       parameters:
-      - name: video_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: video_id
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         200:
           description: Success
-          content: {}
+          content: { }
     put:
       tags:
-      - slides
+        - slides
       operationId: video/{video_id}
       parameters:
-      - name: video_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: video_id
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         200:
           description: Success
-          content: {}
+          content: { }
     post:
       tags:
-      - slides
+        - slides
       operationId: video/{video_id}
       parameters:
-      - name: video_id
-        in: path
-        required: true
-        schema:
-          type: string
+        - name: video_id
+          in: path
+          required: true
+          schema:
+            type: string
       responses:
         200:
           description: Success
-          content: {}
+          content: { }
 
 components:
   securitySchemes:
@@ -3178,33 +3178,42 @@ components:
         bio:
           description: user biography
           type: string
-          nullable: true
         company:
-          description: please use jobs
+          description: Please use jobs instead
           type: string
-          nullable: true
-          deprecated: true
-        linkedin:
-          description: please use socials
-          type: string
-          nullable: true
           deprecated: true
         twitter:
-          description: please use socials
+          description: Please use socials instead
           type: string
-          nullable: true
+          deprecated: true
+        linkedin:
+          description: Please use socials instead
+          type: string
           deprecated: true
         web:
-          description: please use socials
+          description: Please use socials instead
           type: string
-          nullable: true
           deprecated: true
+        interests:
+          description: user interests
+          type: array
+          items:
+            type: string
+        skills:
+          description: user skills
+          type: array
+          items:
+            type: string
         socials:
           description: name and link of your advance profile socials
           type: string
         jobs:
           description: user profile job history
-          type: string
+          type: array
+          items:
+            type: object
+          additionalProperties:
+            $ref: '#/components/schemas/JobModel'
         id:
           description: unique user ID
           type: string
@@ -3224,18 +3233,6 @@ components:
           description: total people that follow an user
           type: number
           default: 0
-        interests:
-          description: user interests
-          type: array
-          default: null
-          items:
-            type: string
-        skills:
-          description: user skills
-          type: array
-          default: null
-          items:
-            type: string
       type: object
 
     UserRequestProfile:
@@ -3733,7 +3730,7 @@ components:
             - 'user' -> Share the video into User feed
             - 'tribe' -> Share the video into a tribe
           type: string
-          enum: ['user', 'tribe']
+          enum: [ 'user', 'tribe' ]
         share_tribe:
           description: |
             If video will be shared into a tribe, this value will be the Tribe ID where user want to share the video.
