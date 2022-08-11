@@ -3293,20 +3293,19 @@ components:
         company:
           description: company name
           type: string
-          example: "Hyperloop Transportation Technologies"
         position:
           description: your role at the company
           type: string
-          example: "CMO"
         start_date:
           description: your role at the company
           type: string
-          example: "Thu, 04 Jul 2019 13:49:51 GMT"
         end_date:
           description: your role at the company
           type: string
-          example: "Thu, 04 Jul 2019 13:49:51 GMT"
-
+      example:
+        company: "Hyperloop Transportation Technologies"
+        position: "CMO"
+        start_date: "Thu, 04 Jul 2019 13:49:51 GMT"
 
     NotificationUserAcceptedResponse:
       type: object
