@@ -3284,7 +3284,7 @@ components:
           type: string
         jobs:
           description: user profile job history
-          type: string
+          type: array
           properties:
             company:
               description: company name
@@ -3294,11 +3294,11 @@ components:
               type: string
             start_date:
               description: your role at the company
-              type: date
+              type: string
               example: "Thu, 04 Jul 2019 13:49:51 GMT"
             end_date:
               description: your role at the company
-              type: date
+              type: string
               example: "Thu, 04 Jul 2019 13:49:51 GMT"
 
     NotificationUserAcceptedResponse:
