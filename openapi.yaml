@@ -24,7 +24,7 @@ info:
     
     HTTP Response code 422: This user is deactivated
   
-
+  
   license:
     name: Creative Commons Attribution 3.0
     url: 'https://creativecommons.org/licenses/by/3.0/'
@@ -882,7 +882,46 @@ paths:
       tags:
         - tribes
 
-  /tribes/public-photo/{TribeId}:
+  /tribes/photo/{TribeId}:
+    post:
+      security:
+        - DeviceId: [ ]
+      description: |
+        Change Tribe profile photo. The process has two steps:
+
+        1. Call this end-point
+        2. This end-point returns an upload url. You must use then to upload the new image to them.
+      operationId: New Tribe Photo
+      parameters:
+        - description: Unique Tribe ID
+          in: path
+          name: TribeId
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadResourceResponse'
+          description: Successful response
+        '203':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadResourceResponse'
+          description: Only tribe owner can change the tribe photo
+        '204':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UploadResourceResponse'
+          description: Tribe not found
+      tags:
+        - tribes
+
+  /tribes/cover-photo/{TribeId}:
     post:
       security:
         - DeviceId: [ ]
@@ -1137,7 +1176,7 @@ paths:
             application/json:
               schema:
                 $ref: '#/components/schemas/ResponseMessage'
-          description: Already belong to the tribe
+          description: Removing your request
         '204':
           content:
             application/json:
@@ -1180,6 +1219,54 @@ paths:
               schema:
                 $ref: '#/components/schemas/ResponseMessage'
           description: You're not the owner of the tribe or tribe doesn't exits
+      tags:
+        - tribes
+
+  /tribes/check-access/{TribeId}:
+    get:
+      security:
+        - DeviceId: [ ]
+      description: Get pending access request for a tribe
+      operationId: Get Pending Access Request
+      parameters:
+        - description: Unique Tribe ID
+          in: path
+          name: TribeId
+          required: true
+          schema:
+            type: string
+        - description: Page number. Default is 0
+          in: query
+          name: page
+          required: false
+          schema:
+            type: integer
+            default: 0
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TribeAccessResponse'
+          description: You belong to this tribe
+        '202':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TribeAccessResponse'
+          description: Request pending
+        '209':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TribeAccessResponse'
+          description: You did not requested access yet
+        '204':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ResponseMessage'
+          description: Tribe not found
       tags:
         - tribes
 
@@ -3582,6 +3669,9 @@ components:
           type: string
         photo:
           description: URL of the Tribe photo
+          type: string
+        cover_photo:
+          description: URL of the Tribe cover photo
           type: string
         is_public:
           description: |
