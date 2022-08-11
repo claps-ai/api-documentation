@@ -3214,6 +3214,10 @@ components:
             type: object
           additionalProperties:
             $ref: '#/components/schemas/JobModel'
+          example:
+            company: "Hyperloop Transportation Technologies"
+            position: "CMO"
+            start_date: "Thu, 04 Jul 2019 13:49:51 GMT"
         id:
           description: unique user ID
           type: string
