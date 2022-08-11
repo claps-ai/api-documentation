@@ -3284,22 +3284,23 @@ components:
           type: string
         jobs:
           description: user profile job history
-          type: object
+          type: array
+          items:
+            type: object
           additionalProperties:
             $ref: '#/components/schemas/JobModel'
 
     JobModel:
       type: object
-      required:
-        - company
-        - position
       properties:
         company:
           description: company name
           type: string
+          example: "Hyperloop Transportation Technologies"
         position:
           description: your role at the company
           type: string
+          example: "CMO"
         start_date:
           description: your role at the company
           type: string
