@@ -3222,7 +3222,7 @@ components:
             provider: "twitter"
             url: "jmrueda1"
         jobs:
-          description: user profile job history
+          description: user profile job history - end_date can be null
           type: array
           items:
             type: object
@@ -3232,7 +3232,19 @@ components:
             company: "Hyperloop Transportation Technologies"
             position: "CMO"
             start_date: "Thu, 04 Jul 2019 13:49:51 GMT"
-            end_date: "Thu, 04 Jul 2019 13:49:51 GMT"
+            end_date: null
+        education:
+          description: user profile education history - end_date can be null
+          type: array
+          items:
+            type: object
+          additionalProperties:
+            $ref: '#/components/schemas/EducationModel'
+          example:
+            institution: "MIT"
+            studies: "PhD Artificial Intelligence"
+            start_date: "Thu, 04 Jul 2019 13:49:51 GMT"
+            end_date: "Thu, 05 Jul 2019 13:49:51 GMT"
         id:
           description: unique user ID
           type: string
@@ -3306,7 +3318,7 @@ components:
             provider: "twitter"
             url: "jmrueda1"
         jobs:
-          description: user profile job history
+          description: user profile job history - end_date can be null
           type: array
           items:
             type: object
@@ -3316,8 +3328,9 @@ components:
             company: "Hyperloop Transportation Technologies"
             position: "CMO"
             start_date: "Thu, 04 Jul 2019 13:49:51 GMT"
+            end_date: null
         education:
-          description: user profile education history
+          description: user profile education history - end_date can be null
           type: array
           items:
             type: object
