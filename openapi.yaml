@@ -3180,21 +3180,31 @@ components:
           type: string
           nullable: true
         company:
-          description: user biography
+          description: please use jobs
           type: string
           nullable: true
+          deprecated: true
         linkedin:
-          description: user linkedin
+          description: please use socials
           type: string
           nullable: true
+          deprecated: true
         twitter:
-          description: user twitter
+          description: please use socials
           type: string
           nullable: true
+          deprecated: true
         web:
-          description: user website
+          description: please use socials
           type: string
           nullable: true
+          deprecated: true
+        socials:
+          description: name and link of your advance profile socials
+          type: string
+        jobs:
+          description: user profile job history
+          type: string
         id:
           description: unique user ID
           type: string
@@ -3244,17 +3254,21 @@ components:
           description: user biography
           type: string
         company:
-          description: user company
+          description: Please use jobs instead
           type: string
+          deprecated: true
         twitter:
-          description: user twitter
+          description: Please use socials instead
           type: string
+          deprecated: true
         linkedin:
-          description: user linkedin
+          description: Please use socials instead
           type: string
+          deprecated: true
         web:
-          description: user web
+          description: Please use socials instead
           type: string
+          deprecated: true
         interests:
           description: user interests
           type: array
@@ -3265,6 +3279,12 @@ components:
           type: array
           items:
             type: string
+        socials:
+          description: name and link of your advance profile socials
+          type: string
+        jobs:
+          description: user profile job history
+          type: string
 
     NotificationUserAcceptedResponse:
       type: object
