@@ -3165,19 +3165,24 @@ components:
         claps:
           description: Total Claps got in their videos
           type: integer
+          example: 265641
         nick:
           description: unique user nick
           type: string
+          example: "Manu"
         name:
           description: user name
           type: string
+          example: "Manu Rueda"
         sur_name:
           description: user surname
           type: string
           nullable: true
+          deprecated: true
         bio:
           description: user biography
           type: string
+          example: "I am an engineer born in the Canary Islands"
         company:
           description: Please use jobs instead
           type: string
@@ -3199,14 +3204,23 @@ components:
           type: array
           items:
             type: string
+          example: [ "entrepreneurship", "genetics", "crypto" ]
         skills:
           description: user skills
           type: array
           items:
             type: string
+          example: [ "coding", "fundraising" ]
         socials:
           description: name and link of your advance profile socials
-          type: string
+          type: array
+          items:
+            type: object
+          additionalProperties:
+            $ref: '#/components/schemas/SocialModel'
+          example:
+            provider: "twitter"
+            url: "jmrueda1"
         jobs:
           description: user profile job history
           type: array
@@ -3218,6 +3232,7 @@ components:
             company: "Hyperloop Transportation Technologies"
             position: "CMO"
             start_date: "Thu, 04 Jul 2019 13:49:51 GMT"
+            end_date: "Thu, 04 Jul 2019 13:49:51 GMT"
         id:
           description: unique user ID
           type: string
@@ -3282,7 +3297,14 @@ components:
             type: string
         socials:
           description: name and link of your advance profile socials
-          type: string
+          type: array
+          items:
+            type: object
+          additionalProperties:
+            $ref: '#/components/schemas/SocialModel'
+          example:
+            provider: "twitter"
+            url: "jmrueda1"
         jobs:
           description: user profile job history
           type: array
@@ -3313,6 +3335,19 @@ components:
           type: string
         end_date:
           description: your role at the company
+          type: string
+
+    SocialModel:
+      type: object
+      required:
+        - provider
+        - url
+      properties:
+        provider:
+          description: social media provider
+          type: string
+        url:
+          description: the social media url
           type: string
 
     NotificationUserAcceptedResponse:
