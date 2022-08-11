@@ -3286,9 +3286,17 @@ components:
             type: object
           additionalProperties:
             $ref: '#/components/schemas/JobModel'
+          example:
+            company: "Hyperloop Transportation Technologies"
+            position: "CMO"
+            start_date: "Thu, 04 Jul 2019 13:49:51 GMT"
 
     JobModel:
       type: object
+      required:
+        - company
+        - position
+        - start_date
       properties:
         company:
           description: company name
@@ -3302,10 +3310,6 @@ components:
         end_date:
           description: your role at the company
           type: string
-      example:
-        company: "Hyperloop Transportation Technologies"
-        position: "CMO"
-        start_date: "Thu, 04 Jul 2019 13:49:51 GMT"
 
     NotificationUserAcceptedResponse:
       type: object
