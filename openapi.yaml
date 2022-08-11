@@ -3316,6 +3316,18 @@ components:
             company: "Hyperloop Transportation Technologies"
             position: "CMO"
             start_date: "Thu, 04 Jul 2019 13:49:51 GMT"
+        education:
+          description: user profile education history
+          type: array
+          items:
+            type: object
+          additionalProperties:
+            $ref: '#/components/schemas/EducationModel'
+          example:
+            institution: "MIT"
+            studies: "PhD Artificial Intelligence"
+            start_date: "Thu, 04 Jul 2019 13:49:51 GMT"
+            end_date: "Thu, 05 Jul 2019 13:49:51 GMT"
 
     JobModel:
       type: object
@@ -3331,10 +3343,30 @@ components:
           description: your role at the company
           type: string
         start_date:
-          description: your role at the company
+          description: start date
           type: string
         end_date:
-          description: your role at the company
+          description: end date
+          type: string
+
+    EducationModel:
+      type: object
+      required:
+        - institution
+        - studies
+        - start_date
+      properties:
+        institution:
+          description: institution name
+          type: string
+        studies:
+          description: your studies
+          type: string
+        start_date:
+          description: start date
+          type: string
+        end_date:
+          description: end date
           type: string
 
     SocialModel:
