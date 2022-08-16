@@ -1988,6 +1988,255 @@ paths:
         - videos
         - re
 
+  /videos/{VideoId}/comments:
+      post:
+        security:
+          - DeviceId: [ ]
+        description: |
+          Add a comment to a video.
+
+          Only required propery is the text of the comment. The rest in infered from the query params of the url as well as other utils to get the current user.
+        parameters:
+          - description: Unique Video ID
+            in: path
+            name: VideoId
+            required: true
+            schema:
+              type: string
+        operationId: Add a comment to a video
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddCommentRequest'
+        responses:
+          '200':
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/AddCommentResponse'
+            description: Successful response
+          '404':
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/InvalidFormResponseMessage'
+            description: Failed response, video not found
+        tags:
+          - comments
+
+      get:
+        security:
+          - DeviceId: [ ]
+        description: |
+          Get all comments of a video
+
+          The returned array contains the following:
+           - All top level comments
+           - On each comment the likes, composed of like_id and user_id for easy filtering to mark the video as already liked by a user
+           - On each comment the replies are identical to a comment but have a comment_id field.
+
+          Each comment will also contain all the information needed to render the UI, like:
+            - Created and edited timestamp
+            - User name, nick and photo
+
+          Comments are returned in descending order based on the created prop.
+          
+          Replies only go one level down. Each reply will add a child to the initial comment.
+        parameters:
+          - description: Unique Video ID
+            in: path
+            name: VideoId
+            required: true
+            schema:
+              type: string
+        operationId: Get all comments on a video
+        responses:
+          '200':
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/GetCommentsResponse'
+            description: Successful response
+          '404':
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/InvalidFormResponseMessage'
+            description: Failed response, video not found
+        tags:
+          - comments
+
+  /videos/{VideoId}/comments/{CommentId}:
+      patch:
+        security:
+          - DeviceId: [ ]
+        description: |
+          Edit a comment.
+
+          Only required property is the text of the comment. Editing a comment will fill the edited property with a datetime string.
+        parameters:
+          - description: Unique Video ID
+            in: path
+            name: VideoId
+            required: true
+            schema:
+              type: string
+          - description: Unique Comment ID
+            in: path
+            name: CommentId
+            required: true
+            schema:
+              type: string
+        operationId: Edit a comment
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddCommentRequest'
+        responses:
+          '200':
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/AddCommentResponse'
+            description: Successful response
+          '404':
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/InvalidFormResponseMessage'
+            description: Failed response, video or comment not found
+        tags:
+          - comments
+
+      delete:
+        security:
+          - DeviceId: [ ]
+        description: | 
+          Marks a video as deleted by setting the deleted prop with a datetime string.
+
+          Does not actually delete the comment, just excludes it from further queries.
+
+          If a parent comment is deleted, then all replies to that comment are excluded as well.
+
+          If a child comment is deleted, it will be the only one excluded.
+        parameters:
+          - description: Unique Video ID
+            in: path
+            name: VideoId
+            required: true
+            schema:
+              type: string
+          - description: Unique Comment ID
+            in: path
+            name: CommentId
+            required: true
+            schema:
+              type: string
+        operationId: Marks a video as deleted
+        responses:
+          '200':
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/DeleteCommentResponse'
+            description: Successful response
+          '404':
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/InvalidFormResponseMessage'
+            description: Failed response, video or comment not found
+        tags:
+          - comments
+
+  /videos/{VideoId}/comments/{CommentId}/reply:
+      post:
+        security:
+          - DeviceId: [ ]
+        description: |
+          Reply to a comment.
+          A new comment entry is created, referencing the initial comment by the comment_id prop.
+
+          The new reply will appear as a child of the initial parent comment when fetching all comments of a video.
+        parameters:
+          - description: Unique Video ID
+            in: path
+            name: VideoId
+            required: true
+            schema:
+              type: string
+          - description: Unique Comment ID
+            in: path
+            name: CommentId
+            required: true
+            schema:
+              type: string
+        operationId: Reply to a comment
+        requestBody:
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AddCommentRequest'
+        responses:
+          '200':
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/AddCommentResponse'
+            description: Successful response
+          '404':
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/InvalidFormResponseMessage'
+            description: Failed response, video or comment not found
+        tags:
+          - comments
+
+  /videos/{VideoId}/comments/{CommentId}/like:
+      get:
+        security:
+          - DeviceId: [ ]
+        description: |
+          Adds a like to a comment.
+
+          Created a comment like entity. This holds some data in case future implementation will need it.
+
+          For a comment, a plain object with like_id (the id of the comment like) and user_id is added to the array.
+
+          This is intended for easy filtering in the client to determine if a user has already liked a comment.
+        parameters:
+          - description: Unique Video ID
+            in: path
+            name: VideoId
+            required: true
+            schema:
+              type: string
+          - description: Unique Comment ID
+            in: path
+            name: CommentId
+            required: true
+            schema:
+              type: string
+        operationId: Adds a like to a comment
+        responses:
+          '200':
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/LikeCommentResponse'
+            description: Successful response
+          '404':
+            content:
+              application/json:
+                schema:
+                  $ref: '#/components/schemas/InvalidFormResponseMessage'
+            description: Failed response, video or comment not found
+        tags:
+          - comments
+
   /slides/models/action:
     get:
       tags:
@@ -4116,3 +4365,116 @@ components:
           items:
             $ref: '#/components/schemas/action'
 
+    AddCommentRequest:
+      properties:
+        text:
+          description: The body of the text message
+          type: string
+      type: object
+
+    AddCommentResponse:
+      additionalProperties: false
+      required:
+        - text
+      properties:
+        comment_id:
+          description: Reference to another comment. Determines if entity is parent comment or reply
+          type: string
+        created:
+          description: The datetime when the comment was created
+          type: string
+        deleted:
+          description: The datetime when the comment was deleted
+          type: string
+        id:
+          description: Unique id for the comment
+          type: string
+        likes:
+          description: Array of likes, composed of user_id and like_id
+          type: array
+        text:
+          description: The content of the comment
+          type: string
+        updated:
+          description: The datetime when the comment was updated
+          type: string
+        user_id:
+          description: User Id of the person who wrote the comment
+          type: string
+        user_name:
+          description: User Name of the person who wrote the comment
+          type: string
+        user_nick:
+          description: User Nick of the person who wrote the comment
+          type: string
+        user_photo:
+          description: User Photo of the person who wrote the comment
+          type: string
+        video_id:
+          description: The video on which the comment was added
+          type: string
+      type: object
+
+    GetCommentsResponse:
+      type: array
+      items:
+        properties:
+          comment_id:
+            description: Reference to another comment. Determines if entity is parent comment or reply
+            type: string
+          created:
+            description: The datetime when the comment was created
+            type: string
+          deleted:
+            description: The datetime when the comment was deleted
+            type: string
+          id:
+            description: Unique id for the comment
+            type: string
+          likes:
+            description: Array of likes, composed of user_id and like_id
+            type: array
+          replies:
+            description: Array of replies, with the same structure as a comment
+            type: array
+          text:
+            description: The content of the comment
+            type: string
+          updated:
+            description: The datetime when the comment was updated
+            type: string
+          user_id:
+            description: User Id of the person who wrote the comment
+            type: string
+          user_name:
+            description: User Name of the person who wrote the comment
+            type: string
+          user_nick:
+            description: User Nick of the person who wrote the comment
+            type: string
+          user_photo:
+            description: User Photo of the person who wrote the comment
+            type: string
+          video_id:
+            description: The video on which the comment was added
+            type: string
+
+    DeleteCommentResponse:
+      properties:
+        deleted_id:
+          description: Id of the deleted comment
+          type: string
+        success:
+          description: Informs if the operation succeeded
+          type: boolean
+      type: object
+
+    LikeCommentResponse:
+      properties:
+        like_id:
+          description: Id of the Like entity
+          type: string
+        success:
+          description: Informs if the operation succeeded
+          type: boolean
+      type: object
