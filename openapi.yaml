@@ -2034,7 +2034,7 @@ paths:
           The returned array contains the following:
            - All top level comments
            - On each comment the likes, composed of like_id and user_id for easy filtering to mark the video as already liked by a user
-           - On each comment the replies, that are identical to a comment but have a comment_id field.
+           - On each comment the replies are identical to a comment but have a comment_id field.
 
           Each comment will also contain all the information needed to render the UI, like:
             - Created and edited timestamp
@@ -2042,7 +2042,7 @@ paths:
 
           Comments are returned in descending order based on the created prop.
           
-          Replies only work one leved down. Each reply will add a child to the initial comment.
+          Replies only go one level down. Each reply will add a child to the initial comment.
         parameters:
           - description: Unique Video ID
             in: path
@@ -2074,7 +2074,7 @@ paths:
         description: |
           Edit a comment.
 
-          Only required propery is the text of the comment. Editing a comment will fill the edited propery with a datetime string.
+          Only required property is the text of the comment. Editing a comment will fill the edited property with a datetime string.
         parameters:
           - description: Unique Video ID
             in: path
@@ -2118,7 +2118,7 @@ paths:
 
           Does not actually delete the comment, just excludes it from further queries.
 
-          If a parent commnet is deleted, then all replies to that comment are excluded as well.
+          If a parent comment is deleted, then all replies to that comment are excluded as well.
 
           If a child comment is deleted, it will be the only one excluded.
         parameters:
@@ -2158,6 +2158,7 @@ paths:
         description: |
           Reply to a comment.
           A new comment entry is created, referencing the initial comment by the comment_id prop.
+
           The new reply will appear as a child of the initial parent comment when fetching all comments of a video.
         parameters:
           - description: Unique Video ID
@@ -2200,9 +2201,12 @@ paths:
           - DeviceId: [ ]
         description: |
           Adds a like to a comment.
+
           Created a comment like entity. This holds some data in case future implementation will need it.
+
           For a comment, a plain object with like_id (the id of the comment like) and user_id is added to the array.
-          This is indended for easy filtering in the client to determine if a user has already liked a comment.
+
+          This is intended for easy filtering in the client to determine if a user has already liked a comment.
         parameters:
           - description: Unique Video ID
             in: path
