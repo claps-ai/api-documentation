@@ -2016,6 +2016,20 @@ paths:
           schema:
             type: string
             default: null
+        - description: Matching conditions for video tags. Multiple allowed
+          in: query
+          name: user_tags
+          required: false
+          schema:
+            type: list
+            default: null
+        - description: Include users saved interests when matching video tags
+          in: query
+          name: user_interests
+          required: false
+          schema:
+            type: boolean
+            default: false            
       responses:
         '200':
           content:
