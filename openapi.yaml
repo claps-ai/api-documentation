@@ -1653,6 +1653,49 @@ paths:
         - DeviceId: [ ]
       description: returns 10 public videos as suggestions for an user
       operationId: Get User Main Feed
+      parameters:
+        - description: Switch between main-feed/real/order
+          in: query
+          name: type
+          required: false
+          schema:
+            type: boolean
+            default: null           
+        - description: Page number. Default is 0
+          in: query
+          name: page
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - description: Limit number. Default is 10
+          in: query
+          name: limit
+          required: false
+          schema:
+            type: integer
+            default: 10
+        - description: Caching mechanism. Set to any persistent value to cache
+          in: query
+          name: cache
+          required: false
+          schema:
+            type: string
+            default: null
+        - description: Matching conditions for video tags. Multiple allowed
+          in: query
+          name: user_tags
+          required: false
+          schema:
+            type: list
+            default: null
+        - description: Include users saved interests when matching video tags
+          in: query
+          name: user_interests
+          required: false
+          schema:
+            type: boolean
+            default: false      
       responses:
         '200':
           content:
@@ -2040,7 +2083,61 @@ paths:
                   $ref: '#/components/schemas/VideoResponse'
           description: Successful response
       tags:
-        - videos        
+        - videos
+
+  /videos/algorithm/filter-by-interest/order:
+    get:
+      security:
+        - DeviceId: [ ]
+      description: returns 10 videos picked by an algorithm
+      operationId: REFilterByInterestsOrder
+      parameters:
+        - description: Page number. Default is 0
+          in: query
+          name: page
+          required: false
+          schema:
+            type: integer
+            default: 0
+        - description: Limit number. Default is 10
+          in: query
+          name: limit
+          required: false
+          schema:
+            type: integer
+            default: 10
+        - description: Caching mechanism. Set to any persistent value to cache
+          in: query
+          name: cache
+          required: false
+          schema:
+            type: string
+            default: null
+        - description: Matching conditions for video tags. Multiple allowed
+          in: query
+          name: user_tags
+          required: false
+          schema:
+            type: list
+            default: null
+        - description: Include users saved interests when matching video tags
+          in: query
+          name: user_interests
+          required: false
+          schema:
+            type: boolean
+            default: false            
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/VideoResponse'
+          description: Successful response
+      tags:
+        - videos                
 
   /slides/models/action:
     get:
