@@ -4052,6 +4052,12 @@ components:
         title:
           description: Title for the video
           type: string
+        vip_video:
+          description: |
+          `vip_video`. Marking a video as a `vip_video` will mark the video as a VIP video
+          which sends information about it to a notion database. Everything else will be unchanged
+          except the video will not show up in any feeds untill it has been processed          
+          type: boolean          
         share_to:
           description: |
             Where to share this video. Two choices are available:
